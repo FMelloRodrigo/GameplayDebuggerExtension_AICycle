@@ -2,6 +2,7 @@
 A simple plugin that consists in a Gameplay Debugger Extension that allows cycling between AI agents when using the Unreal's Gameplay Debugger
 
 Default keys are: 
+
 Crtl+ Page Up / Page Down: Cycle AI agents
 
 Crtl+ R: Reset current Cycling
