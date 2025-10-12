@@ -3,9 +3,9 @@ A simple plugin that consists in a Gameplay Debugger Extension that allows cycli
 
 Default keys are: 
 
-Crtl+ Page Up / Page Down: Cycle AI agents
+Crtl+Page Up / Page Down: Cycle AI agents
 
-Crtl+ R: Reset current Cycling
+Crtl+R: Reset current Cycling
 
  - Keys can be remapped under Project Settings->Gameplay Debugger->Addons->AICycleDebugger
  - Currently two options are available under Project Settings->Engine->Gameplay Debugger AI Cycle:
