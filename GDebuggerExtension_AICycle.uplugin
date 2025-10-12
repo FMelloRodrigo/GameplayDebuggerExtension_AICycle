@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Gameplay Debugger Extension - AI Cycle",
+	"Description": "A simple gameplay debugger extension to cycle between AI agents",
+	"Category": "Other",
+	"CreatedBy": "Rodrigo Mello",
+	"CreatedByURL": "https://www.youtube.com/@RodrigoMelloUnreal",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "rodrigomello.unrealmarketplace@gmail.com",
+	"EngineVersion": "5.6.0",
+	"CanContainContent": true,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "GDebuggerExtension_AICycle",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
