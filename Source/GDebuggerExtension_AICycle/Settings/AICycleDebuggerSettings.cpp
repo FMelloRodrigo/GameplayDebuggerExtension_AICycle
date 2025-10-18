@@ -1,4 +1,4 @@
-// Copyright 2025 - Rodrigo Mello
+//Rodrigo Mello 2025 All Rights Reserved.
 
 
 #include "AICycleDebuggerSettings.h"

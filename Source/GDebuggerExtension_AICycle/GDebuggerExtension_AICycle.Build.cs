@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+//Rodrigo Mello 2025 All Rights Reserved.
 
 using UnrealBuildTool;
 

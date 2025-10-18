@@ -7,17 +7,22 @@
 	"Category": "Other",
 	"CreatedBy": "Rodrigo Mello",
 	"CreatedByURL": "https://www.youtube.com/@RodrigoMelloUnreal",
-	"DocsURL": "",
-	"MarketplaceURL": "",
+	"DocsURL": "https://docs.google.com/document/d/1f9rYsySXPAJREGtP2fN5aO8GNzJOFzq-D8yYUApO6n0/edit?usp=sharing",
+	"MarketplaceURL": "com.epicgames.launcher://ue/Fab/product/40b9b718-5270-4d7d-a1fc- 2628231a874b",
 	"SupportURL": "rodrigomello.unrealmarketplace@gmail.com",
-	"EngineVersion": "5.6.0",
 	"CanContainContent": true,
-	"Installed": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
 	"Modules": [
 		{
 			"Name": "GDebuggerExtension_AICycle",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64"
+			]
+
 		}
 	]
-}
+} 
