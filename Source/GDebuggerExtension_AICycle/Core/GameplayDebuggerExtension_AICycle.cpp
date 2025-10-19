@@ -96,8 +96,21 @@ void GameplayDebuggerExtension_AICycle::OnKey_PageDown()
 
 void GameplayDebuggerExtension_AICycle::OnRefreshTargets()
 {
+	const UAICycleDebuggerSettings* Settings = GetDefault<UAICycleDebuggerSettings>();
+	
 	CurrentIndex = 0;
 	GatherTargets();
+
+	if (Settings->IncludePlayer)
+	{
+		if (APlayerController* PC = GetPlayerController())
+		{
+			if (APawn* PlayerPawn = PC->GetPawn())
+			{
+				SetDebuggerTarget(PlayerPawn);
+			}
+		}
+	}
 }
 
 void GameplayDebuggerExtension_AICycle::SetDebuggerTarget(APawn* Pawn)
@@ -125,7 +138,7 @@ void GameplayDebuggerExtension_AICycle::GatherTargets()
 		return;
 	}
 
-	AActor* PlayerPawn = PC->GetPawn();
+	APawn* PlayerPawn = PC->GetPawn();
 	if (!PlayerPawn)
 	{
 		return;
@@ -136,8 +149,16 @@ void GameplayDebuggerExtension_AICycle::GatherTargets()
 
 	TArray<FOverlapResult> OverlapResults;
 	FCollisionQueryParams CollisionParams(SCENE_QUERY_STAT(AICycleDebugger), false);
-	CollisionParams.AddIgnoredActor(PlayerPawn);
 
+	if (Settings->IncludePlayer)
+	{
+		CachedAITargets.AddUnique(PlayerPawn);
+	} 
+	else
+	{
+		CollisionParams.AddIgnoredActor(PlayerPawn);
+	}
+	
 	World->OverlapMultiByObjectType(OverlapResults, PlayerLocation, FQuat::Identity, FCollisionObjectQueryParams(ECollisionChannel::ECC_Pawn), FCollisionShape::MakeSphere(Settings->SearchRadius), CollisionParams);
 
 	for (const FOverlapResult& Result : OverlapResults)
@@ -157,11 +178,12 @@ void GameplayDebuggerExtension_AICycle::GatherTargets()
 			}
 		}
 	}
+	
 
-	if (CachedAITargets.Num() > 1)
+	if (CachedAITargets.Num() > 1 && Settings->OrganizeByDistance)
 	{
 
-		Algo::Sort(CachedAITargets, [&PlayerLocation](const TWeakObjectPtr<AActor>& A, const TWeakObjectPtr<AActor>& B)
+		Algo::Sort(CachedAITargets, [&PlayerLocation](const TWeakObjectPtr<APawn>& A, const TWeakObjectPtr<APawn>& B)
 			{
 				if (!A.IsValid() || !B.IsValid())
 				{
@@ -172,6 +194,7 @@ void GameplayDebuggerExtension_AICycle::GatherTargets()
 				return DistA < DistB;
 			});
 	}
+
 
 	if (CachedAITargets.Num() == 0)
 	{

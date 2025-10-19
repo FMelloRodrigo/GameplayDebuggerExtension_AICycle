@@ -20,4 +20,10 @@ public:
 
     UPROPERTY(Config, EditAnywhere, BlueprintReadOnly, Category = "General")
     TArray<TSubclassOf<APawn>> AIFilterClasses;
+
+    UPROPERTY(Config, EditAnywhere, BlueprintReadOnly, Category = "General")
+    bool IncludePlayer;
+
+    UPROPERTY(Config, EditAnywhere, BlueprintReadOnly, Category = "General")
+    bool OrganizeByDistance;
 };

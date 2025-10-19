@@ -7,4 +7,6 @@ UAICycleDebuggerSettings::UAICycleDebuggerSettings()
 {
 
     SearchRadius = 1500.0f; 
+    IncludePlayer = false;
+    OrganizeByDistance = true;
 }
